@@ -1,0 +1,6 @@
+User-Agent: *
+Crawl-delay: 2
+Disallow: /cache/
+Disallow: /php-helpers/
+Host: merlinquest.ru
+Sitemap: http://merlinquest.ru/sitemap.xml

@@ -1,0 +1,32 @@
+@mixin glob-sizes($prefix : ""){
+  /*
+* Height Sizing Presets
+* These are height values from 10 to 10 to set responsive height to a block
+*/
+  .hsize#{$prefix}-reset {height:0 !important;}
+  @for $i from 1 through 70{
+    $size : $i * 10;
+    .hsize#{$prefix}-#{$size} {
+      height: #{$size}px;
+    }
+  }
+  /*
+   * Width presets
+   */
+  @for $i from 1 through 10{
+    $size : $i * 10;
+    .w#{$prefix}-#{$size} {
+      width: #{$size}% !important;
+    }
+  }
+}
+@include glob-sizes();
+@include respond-neg(md){
+  @include glob-sizes("-md");
+}
+@include respond-neg(sm){
+  @include glob-sizes("-sm");
+}
+@include respond-neg(xs){
+  @include glob-sizes("-xs");
+}

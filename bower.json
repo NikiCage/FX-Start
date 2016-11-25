@@ -1,0 +1,44 @@
+{
+  "name": "newfoxi",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Nikita Krasnikov <krasnikov@foxinet.ru>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.10.1",
+    "jquery.cookie": "jquery-cookie#^1.4.1",
+    "media-match": "^2.0.2",
+    "jquery_appear": "jquery.appear.js#^0.3.6",
+    "smoothscroll-for-websites": "1.4.4",
+    "jquery.easing": "^1.3.1",
+    "skrollr": "^0.6.30",
+    "magnific-popup": "^1.1.0",
+    "jquery-touchswipe": "^1.6.16",
+    "jquery-carouFredSel": "*",
+    "jquery-countTo": "^1.2.0",
+    "imagesloaded": "^4.1.0",
+    "swfobject": "*",
+    "compass-mixins": "^1.0.2"
+  },
+  "overrides": {
+    "compass-mixins": {
+      "main": [
+        "lib/_compass.scss",
+        "lib/animation/_core.scss",
+        "lib/animation/_shared.scss",
+        "lib/animation/_animate.scss"
+      ]
+    }
+  }
+}

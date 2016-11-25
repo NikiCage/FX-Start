@@ -1,0 +1,139 @@
+@mixin respond-to($media, $max : false) {
+    @if $media == mobile {
+        @media only screen
+        and (min-width : 320px)
+        and (max-width : 960px) {
+            @content;
+        }
+    }
+        /*@else if $media == mobile-horizontal {
+            @media only screen and (min-width : 321px) {
+                @content;
+            }
+        }
+        @else if $media == mobile-vertical {
+            @media only screen and (max-width : 320px) {
+                @content;
+            }
+        }*/
+    @else if $media == ipad {
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px) {
+            @content;
+        }
+    }
+    @else if $media == ipad-horizontal {
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px)
+        and (orientation : landscape) {
+            @content;
+        }
+    }
+    @else if $media == ipad-vertical {
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px)
+        and (orientation : portrait) {
+            @content;
+        }
+    }
+    @else if $media == desktop {
+        @media only screen and (min-width : 1224px) {
+            @content;
+        }
+    }
+    @else if $media == desktop-mini {
+        @media only screen
+        and (min-width : 960px)
+        and (max-width : 1224px){
+            @content;
+        }
+    }
+    @else if $media == desktop-big {
+        @media only screen and (min-width : 1824px) {
+            @content;
+        }
+    }
+
+    @else if $media == iphone {
+        @media
+        only screen and (-webkit-min-device-pixel-ratio : 1.5),
+        only screen and (min-device-pixel-ratio : 1.5) {
+            @content;
+        }
+    }
+
+    @else if $media == monitor {
+        @media only screen and (min-width : 980px) {
+            @content;
+        }
+    }
+    @if $media == xs {
+        @media only screen
+        and (max-width : 768px) {
+            @content;
+        }
+    }
+    @if $max {
+        @if $media == sm {
+            @media only screen
+            and (min-width : 768px) and (max-width : 991px){
+                @content;
+            }
+        }
+        @if $media == md {
+            @media only screen
+            and (min-width : 992px) and (max-width : 1199px){
+                @content;
+            }
+        }
+    } @else {
+        @if $media == sm {
+            @media only screen
+            and (min-width : 768px) {
+                @content;
+            }
+        }
+        @if $media == md {
+            @media only screen
+            and (min-width : 992px){
+                @content;
+            }
+        }
+    }
+    @if $media == lg {
+        @media only screen
+        and (min-width : 1200px){
+            @content;
+        }
+    }
+    @if $media == outwrapper {
+        @media only screen
+        and (max-width : 1490px) {
+            @content;
+        }
+    }
+}
+@mixin respond-neg($media) {
+    $sizes : (
+        "md" : 1199,
+        "sm" : 991,
+        "xs" : 767
+    );
+    $size : map_get($sizes, $media);
+    @media only screen and (max-width : #{$size}px) {
+        @content;
+    }
+}
+
+/* Smartphones (landscape) ----------- */
+/* Smartphones (portrait) ----------- */
+/* iPads (portrait and landscape) ----------- */
+/* iPads (landscape) ----------- */
+/* iPads (portrait) ----------- */
+/* Desktops and laptops ----------- */
+/* Large screens ----------- */
+/* iPhone 4 ----------- */
+

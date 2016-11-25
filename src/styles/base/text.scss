@@ -1,0 +1,73 @@
+@mixin glob-text($prefix : ""){
+  /* Font-sizes-presets */
+  @each $fs-name, $fs-value in $fs {
+    .fs#{$prefix}-#{$fs-name} {
+      font-size: #{$fs-value}px;
+    }
+  }
+}
+@include glob-text();
+@include respond-neg(md){
+  @include glob-text("-md");
+}
+@include respond-neg(sm){
+  @include glob-text("-sm");
+}
+@include respond-neg(xs){
+  @include glob-text("-xs");
+}
+
+
+/* Font weight helpers */
+@each $fw-name, $fw-value in $fw {
+  .fw-#{$fw-name} {
+    font-weight: $fw-value !important;
+  }
+}
+
+@each $lt-spacing in $lt-spacings {
+  /* Letter spacing */
+  .lt-spacing-#{$lt-spacing} {
+    letter-spacing: #{$lt-spacing}px !important;
+  }
+  /* Letter spacing - Negative */
+  .lt-spacing-neg-#{$lt-spacing} {
+    letter-spacing: -#{$lt-spacing}px !important;
+  }
+}
+
+/* Color helpers for either dark or light backgrounds */
+.dark-color{
+  &, a, h1, h2, h3, h4, h5, h6{
+    color: $color_vulcan_approx;
+  }
+}
+.light-color{
+  &, a, h1, h2, h3, h4, h5, h6{
+    color: $color_wild_sand_approx;
+  }
+}
+
+@each $color-name, $color-value in $fx-colors {
+  /* Text Color Presets */
+  .text-#{$color-name},
+  .text-hover-#{$color-name}:hover {
+    color: $color-value !important;
+  }
+  /* Background Color Presets */
+  .bg-#{$color-name},
+  .bg-hover-#{$color-name}:hover {background: $color-value !important;}
+}
+
+@each $opacity in $op-text {
+  /* Black Color Transparent */
+  .text-black-op#{$opacity} {
+    color:rgba(0,0,0,(.1 * $opacity)) !important;
+  }
+  /* White Color Transparent */
+  .text-white-op#{$opacity} {
+    color:rgba(255,255,255,(.1 * $opacity)) !important;
+  }
+}
+
+

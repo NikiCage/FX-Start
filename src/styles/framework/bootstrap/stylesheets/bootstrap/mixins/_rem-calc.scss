@@ -1,0 +1,10 @@
+@function rem-calc($size){
+    @return $size / $font-size-base * 1rem;
+}
+
+@mixin rem-calc($size){
+    font-size: $size / $font-size-base * 1rem;
+    .ie8 &{
+        font-size: $size;
+    }
+}

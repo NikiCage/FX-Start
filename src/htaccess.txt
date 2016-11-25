@@ -1,0 +1,82 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+	Options +FollowSymlinks
+	RewriteEngine On
+
+	# Option 1 (default)
+	# ==================
+	# Use this if your website runs in the root of the domain.
+	# i.e. http://example.com/index.html
+	#
+	#RewriteBase /
+	#RewriteCond %{HTTP:Cookie} devicePixelRatio [NC]
+	#ewriteRule \.(?:jpe?g|gif|png|bmp)$ /php-helpers/_retinaimages.php [NC,L]
+
+	# Option 2
+	# ==================
+	# Use this if your website runs in a sub-directory.
+	# i.e. http://example.com/website/directory/index.html
+	#
+	#RewriteBase /website/directory
+	#RewriteRule \.(?:jpe?g|gif|png|bmp)$ /php-helpers/_retinaimages.php [NC,L]
+
+</IfModule>
+
+<IfModule mod_deflate.c>
+    # The following line is enough for .js and .css
+    AddOutputFilter DEFLATE js css
+<IfModule mod_filter.c>
+    # compress text, html, javascript, css, xml:
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+ </IfModule>
+    # The following lines are to avoid bugs with some browsers
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule>
+
+# BEGIN EXPIRES
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 10 days"
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType text/plain "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType application/x-javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType application/x-icon "access plus 1 year"
+</IfModule>
+# END EXPIRES
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(js|css|xml|gz)$">
+        Header append Vary Accept-Encoding
+    </FilesMatch>
+    <FilesMatch "\.(ico|jpe?g|png|gif|swf)$">
+        Header set Cache-Control "public"
+    </FilesMatch>
+    <FilesMatch "\.(css)$">
+        Header set Cache-Control "public"
+    </FilesMatch>
+    <FilesMatch "\.(js)$">
+        Header set Cache-Control "private"
+    </FilesMatch>
+    <FilesMatch "\.(x?html?|php)$">
+        Header set Cache-Control "private, must-revalidate"
+    </FilesMatch>
+    Header set Connection keep-alive
+</IfModule>
+
+RewriteCond %{HTTP_HOST} ^www.merlinquest.ru/$ [NC]
+RewriteRule ^(.*)$ http://merlinquest.ru/$1 [R=301,L]

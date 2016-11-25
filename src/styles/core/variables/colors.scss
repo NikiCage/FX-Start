@@ -1,0 +1,42 @@
+$gray-color: #a4a4a4;
+$red-color: #E82F4F;
+$blue-color: #428bca;
+$pink-color: #ff6580;
+$black-color: #131313;
+$dark-gray-color: #626262;
+$darker-gray-color: #4b4b4b;
+$light-gray-color: #efeeee;
+$white-color: #ffffff;
+$green-color: #009640;
+
+$color_vulcan_approx: #0e111c;
+$color_wild_sand_approx: #f5f5f5;
+
+/* Font weight helpers */
+$fx-colors: (
+        "green": #63AD68,
+        "blue": #105095,
+        "red": #f46e6e,
+        "purple": #c06fcc,
+        "yellow": #f4e36e,
+        "yellowfull": #f2d429,
+        "lightyellow": #f1e779,
+        "orange": #eea754,
+        "turquoise": #33d1ed,
+        "lightblue": #3E94CF,
+        "cloudblue": #767c83,
+        "lightred": #df6c8a,
+        "pink": #f3749b,
+        "gray": #888,
+        "white": #fff,
+        "black": #000,
+        "lightgray": #d0d5d8,
+        "silver": #c1c3c4,
+        "darkgray": #45474d,
+        "dirtywhite": #f5f5f5,
+        "goldie": #dcb66b
+);
+
+$main_theme_color : map_get($fx-colors,"gray");
+
+

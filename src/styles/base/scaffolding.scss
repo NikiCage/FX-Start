@@ -1,0 +1,86 @@
+.thin-shadow {
+  @include box-shadow(0 1px 1px rgba(0,0,0,0.15));
+}
+/* Opacity helpers */
+@for $i from 0 through 10 {
+  .opacity#{$i},
+  .hov-opacity#{$i}:hover {opacity:(.1 * $i) !important;}
+}
+
+/* Simple floats helpers */
+.align-left {float:left;}
+.align-right {float:right;}
+
+/* Reset Borders */
+.noborder {border:0;}
+/* Reset line height */
+.reset-line-height {line-height: 1}
+
+/* Remove text-shadows from element */
+.stg-notextshadow,
+.stg-notextshadow * {text-shadow:none !important;}
+/* to uppercase */
+.uppercase {text-transform: uppercase;}
+
+/* Vertical align */
+.vtop {vertical-align: top;}
+.vmid {vertical-align: middle;}
+.vbot {vertical-align: bottom;}
+
+@mixin glob-scaffolding($prefix : ""){
+  /* Float None */
+  .pull-none#{$prefix} {
+    float: none !important;
+  }
+  /* Float Clearing Presets */
+  .cleft#{$prefix} {
+    clear: left;
+  }
+  .cright#{$prefix} {
+    clear: right;
+  }
+  .cboth#{$prefix} {
+    clear: both;
+  }
+  /* Reset Columnized Lists */
+  .list-col-reset#{$prefix}[data-columns] {
+    margin-left: 0;
+    li {
+      float: none;
+      margin-left: 0;
+      width: auto;
+      display: block;
+    }
+  }
+  /* Button Padding Presets */
+  .btn{
+    &.mid-padding#{$prefix} {
+      padding: 10px 20px;
+      line-height: 1;
+    }
+    &.big-padding#{$prefix} {
+      padding: 15px 30px;
+      line-height: 1;
+    }
+    &.long-padding#{$prefix} {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+  /* Text Center */
+  .text-center#{$prefix} {
+    text-align: center;
+  }
+}
+@include glob-scaffolding();
+@include respond-neg(md){
+  @include glob-scaffolding("-md");
+}
+@include respond-neg(sm){
+  @include glob-scaffolding("-sm");
+}
+@include respond-neg(xs){
+  @include glob-scaffolding("-xs");
+}
+
+

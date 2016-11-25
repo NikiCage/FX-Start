@@ -1,0 +1,74 @@
+/*
+    Vertical gradient
+
+    @include vertical_gradient($top_color,$bottom_color);
+*/
+
+@mixin vertical_gradient($top: #fff,$bottom: #000){
+  background-color: $top;
+  background-image: -moz-linear-gradient(top,  $top 0%, $bottom 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom));
+  background-image: -webkit-linear-gradient(top,  $top 0%,$bottom 100%);
+  background-image: -o-linear-gradient(top,  $top 0%,$bottom 100%);
+  background-image: -ms-linear-gradient(top,  $top 0%,$bottom 100%);
+  background-image: linear-gradient(to bottom,  $top 0%,$bottom 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$top}' ,endColorstr='#{$bottom}',GradientType=0 );
+}
+
+
+/* IE8 RGBA */
+@mixin ie8--rgba($hex, $alpha){
+  background:transparent;
+  @if $alpha == 1 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF#{$hex}' ,endColorstr='#FF#{$hex}');
+  } @else if $alpha == 0.95 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#F2#{$hex}' ,endColorstr='#F2#{$hex}');
+  } @else if $alpha == 0.9 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#E6#{$hex}' ,endColorstr='#E6#{$hex}');
+  } @else if $alpha == 0.85 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#D9#{$hex}' ,endColorstr='#D9#{$hex}');
+  } @else if $alpha == 0.8 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#CC#{$hex}' ,endColorstr='#CC#{$hex}');
+  } @else if $alpha == 0.75 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#BF#{$hex}' ,endColorstr='#BF#{$hex}');
+  } @else if $alpha == 0.7 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#B3#{$hex}' ,endColorstr='#B3#{$hex}');
+  } @else if $alpha == 0.65 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#A6#{$hex}' ,endColorstr='#A6#{$hex}');
+  } @else if $alpha == 0.6 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#99#{$hex}' ,endColorstr='#99#{$hex}');
+  } @else if $alpha == 0.55 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#8C#{$hex}' ,endColorstr='#8C#{$hex}');
+  } @else if $alpha == 0.5 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#80#{$hex}' ,endColorstr='#80#{$hex}');
+  } @else if $alpha == 0.45 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#73#{$hex}' ,endColorstr='#73#{$hex}');
+  } @else if $alpha == 0.4 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#66#{$hex}' ,endColorstr='#66#{$hex}');
+  } @else if $alpha == 0.35 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#59#{$hex}' ,endColorstr='#59#{$hex}');
+  } @else if $alpha == 0.3 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#4D#{$hex}' ,endColorstr='#4D#{$hex}');
+  } @else if $alpha == 0.25 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#40#{$hex}' ,endColorstr='#40#{$hex}');
+  } @else if $alpha == 0.2 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#33#{$hex}' ,endColorstr='#33#{$hex}');
+  } @else if $alpha == 0.15 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#26#{$hex}' ,endColorstr='#26#{$hex}');
+  } @else if $alpha == 0.1 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1A#{$hex}' ,endColorstr='#1A#{$hex}');
+  } @else if $alpha == 0.05 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0D#{$hex}' ,endColorstr='#0D#{$hex}');
+  } @else if $alpha == 0 {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00#{$hex}' ,endColorstr='#00#{$hex}');
+  }
+  zoom: 1;
+}
+
+/* REM CALC */
+
+@mixin bg-size-ie8($path){
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{$path}', sizingMethod='scale');
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{$path}', sizingMethod='scale')";
+}
+

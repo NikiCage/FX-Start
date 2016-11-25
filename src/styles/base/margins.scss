@@ -1,0 +1,65 @@
+/* negative margins for grid columns */
+.stg-negative-right {margin-right: -15px;}
+.stg-negative-left {margin-left: -15px;}
+
+
+/*
+* Margins Classes
+* Helper classes for side margins
+*/
+@mixin margin-gen($size, $prefix){
+  .ml#{$prefix}-#{$size}{margin-left:#{$size}px !important;}
+  .mr#{$prefix}-#{$size}{margin-right:#{$size}px !important;}
+  .mt#{$prefix}-#{$size}{margin-top:#{$size}px !important;}
+  .mb#{$prefix}-#{$size}{margin-bottom:#{$size}px !important;}
+}
+/*
+* Margins Classes - Negative
+* Helper classes for side margins on negative
+*/
+@mixin neg-margin-gen($size, $prefix){
+  .mnl#{$prefix}-#{$size}{margin-left:-#{$size}px !important;}
+  .mnr#{$prefix}-#{$size}{margin-right:-#{$size}px !important;}
+  .mnt#{$prefix}-#{$size}{margin-top:-#{$size}px !important;}
+  .mnb#{$prefix}-#{$size}{margin-bottom:-#{$size}px !important;}
+}
+/*
+* Padding Classes
+* Helper classes for side padding
+*/
+@mixin padding-gen($size, $prefix){
+  .pl#{$prefix}-#{$size}{padding-left:#{$size}px !important;}
+  .pr#{$prefix}-#{$size}{padding-right:#{$size}px !important;}
+  .pt#{$prefix}-#{$size}{padding-top:#{$size}px !important;}
+  .pb#{$prefix}-#{$size}{padding-bottom:#{$size}px !important;}
+}
+
+@mixin glob-margins($prefix : ""){
+  @for $i from 0 through 10{
+    @include margin-gen($i * 5, $prefix);
+    @include padding-gen($i * 5, $prefix);
+  }
+  @for $i from 6 through 15{
+    @include margin-gen($i * 10, $prefix);
+    @include padding-gen($i * 10, $prefix);
+  }
+  @include margin-gen(200, $prefix);
+  @include margin-gen(250, $prefix);
+  @include padding-gen(200, $prefix);
+  @include padding-gen(250, $prefix);
+
+  @for $i from 1 through 15{
+    @include neg-margin-gen($i * 10, $prefix);
+  }
+}
+
+@include glob-margins();
+@include respond-neg(md){
+  @include glob-margins("-md");
+}
+@include respond-neg(sm){
+  @include glob-margins("-sm");
+}
+@include respond-neg(xs){
+  @include glob-margins("-xs");
+}

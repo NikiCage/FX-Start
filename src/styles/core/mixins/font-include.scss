@@ -1,0 +1,20 @@
+@mixin font-mixin ($path, $font-family ,$weight : normal, $style : normal, $svg : false){
+  @font-face {
+    font-family: $font-family;
+    src: url('#{$path}.eot'); /* IE9 Compat Modes */
+    @if $svg {
+      src: url('#{$path}.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+      url('#{$path}.woff') format('woff'), /* Modern Browsers */
+      url('#{$path}.ttf')  format('truetype'), /* Safari, Android, iOS */
+      url('#{$path}.svg#ElegantIcons') format('svg');
+    }
+    @else {
+      src: url('#{$path}.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+      url('#{$path}.woff') format('woff'), /* Modern Browsers */
+      url('#{$path}.ttf')  format('truetype'); /* Safari, Android, iOS */
+    }
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
